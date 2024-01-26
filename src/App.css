@@ -1,0 +1,19 @@
+main {
+    padding: 10px;
+}
+
+
+
+header {
+    padding-top: 18px;
+}
+nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+li {
+    list-style: none;
+}
