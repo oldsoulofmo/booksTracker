@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
 *,
 *::before,
 *::after {
@@ -10,14 +12,16 @@ html,
 body,
 #root {
   height: 100%;
+  font-family: "Noto Sans", sans-serif;
 }
 
 body {
-  background-color:;
+  background-color: white;
 }
 
 header {
-  padding: 10px;
+  padding: 22px;
+  margin-top: 10px;
   display: flex;
   justify-content: space-between;
 }
@@ -45,18 +49,37 @@ a {
   height: 30px;
   padding: 12px;
   border-radius: 5px;
-  border: 2px solid #ccc;
+  border: none;
   transition: 600ms;
 }
 
-.textBox:focus {
+.textBox-day {
+  background-color: #191919;
+  width: 230px;
+  height: 30px;
+  padding: 12px;
+  border-radius: 5px;
+  border: none;
+  transition: 600ms;
+}
+
+.textBox:focus,
+.textBox-day:focus {
   outline: 0;
   transform: translateY(-18px);
   transition: 600ms;
 }
 
+.textBox-day::placeholder {
+  color: white;
+}
+
+.textBox::placeholder {
+  color: #191919;
+}
+
 .night {
-  background-color: hsla(39, 15%, 14%, 1);
+  background-color: #191919;
 }
 
 a:link {
@@ -73,4 +96,8 @@ a:hover {
 
 a:active {
   color: black;
+}
+
+.a {
+  color: white;
 }

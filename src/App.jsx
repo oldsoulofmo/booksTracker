@@ -1,3 +1,4 @@
+import { MdDarkMode, MdLightMode } from "react-icons/md";
 import { useState } from "react";
 import "./App.css";
 
@@ -11,7 +12,7 @@ export default function App() {
         onClick2={() => setNight(false)}
       />
       <div className="search-container">
-        <Search />
+        <Search isNight={isNight} />
       </div>
     </div>
   );
@@ -20,21 +21,23 @@ export default function App() {
 function Header({ night, onClick, onClick2 }) {
   return (
     <header>
-      <a href="">booksTracker</a>
+      <a href="">
+        <span className={night ? "a" : ""}>booksTracker</span>
+      </a>
       {!night ? (
-        <button onClick={onClick}>D</button>
+        <MdDarkMode size={25} onClick={onClick} />
       ) : (
-        <button onClick={onClick2}>N</button>
+        <MdLightMode size={25} color="white" onClick={onClick2} />
       )}
     </header>
   );
 }
 
-function Search() {
+function Search({ isNight }) {
   return (
     <section>
       <input
-        className="textBox"
+        className={!isNight ? "textBox-day" : "textBox"}
         placeholder="Enter your current reading book ..."></input>
     </section>
   );
