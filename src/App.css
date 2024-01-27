@@ -1,20 +1,76 @@
-main {
-    padding: 10px;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
+html,
+body,
+#root {
+  height: 100%;
+}
 
+body {
+  background-color:;
+}
 
 header {
-    padding-top: 18px;
-}
-nav {
-    display: flex;
-    justify-content: space-between;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
 }
 
-
-
-li {
-    list-style: none;
+a {
+  text-decoration: none;
+  position: relative;
+  margin: auto;
 }
 
+#root > div {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.search-container {
+  margin: auto;
+  align-self: center;
+  margin: auto;
+}
+
+.textBox {
+  width: 230px;
+  height: 30px;
+  padding: 12px;
+  border-radius: 5px;
+  border: 2px solid #ccc;
+  transition: 600ms;
+}
+
+.textBox:focus {
+  outline: 0;
+  transform: translateY(-18px);
+  transition: 600ms;
+}
+
+.night {
+  background-color: hsla(39, 15%, 14%, 1);
+}
+
+a:link {
+  color: black;
+}
+
+a:visited {
+  color: black;
+}
+
+a:hover {
+  color: none;
+}
+
+a:active {
+  color: black;
+}
