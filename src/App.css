@@ -29,19 +29,24 @@ header {
 a {
   text-decoration: none;
   position: relative;
-  margin: auto;
+  align-self: center;
 }
 
-#root > div {
+#root > main {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
 
+main > div {
+  display: flex;
+  flex-direction: column;
+}
+
 .search-container {
   margin: auto;
   align-self: center;
-  margin: auto;
+  margin-top: 22%;
 }
 
 .textBox {
@@ -61,6 +66,7 @@ a {
   border-radius: 5px;
   border: none;
   transition: 600ms;
+  color: white;
 }
 
 .textBox:focus,
@@ -72,10 +78,14 @@ a {
 
 .textBox-day::placeholder {
   color: white;
+
+  opacity: 0.7;
 }
 
 .textBox::placeholder {
   color: #191919;
+
+  opacity: 0.7;
 }
 
 .night {
@@ -100,4 +110,24 @@ a:active {
 
 .a {
   color: white;
+}
+
+div > ul {
+  margin: 42px;
+}
+ul {
+  display: flex;
+  gap: 10px;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+li {
+  text-decoration: none;
+  background-color: #5f6f52;
+  height: fit-content;
+  padding: 5px;
+  font-size: 12.5px;
+  color: white;
+  border-radius: 5px;
 }
