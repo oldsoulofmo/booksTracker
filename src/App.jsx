@@ -24,7 +24,12 @@ export default function App() {
   useEffect(
     function () {
       try {
-        const storedBooks = localStorage.setItem("books", JSON.stringify(book));
+        if (book.length > 0) {
+          const storedBooks = localStorage.setItem(
+            "books",
+            JSON.stringify(book)
+          );
+        }
       } catch (e) {
         console.error(e);
       }
