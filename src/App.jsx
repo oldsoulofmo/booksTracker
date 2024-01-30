@@ -1,10 +1,13 @@
 import { MdDarkMode, MdLightMode } from "react-icons/md";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 
 export default function App() {
   const [isNight, setNight] = useState(false);
-  const [book, setBooks] = useState([]);
+  const [book, setBooks] = useState(function () {
+    const stored = localStorage.getItem("books");
+    return JSON.parse(stored);
+  });
 
   function addBooks(book) {
     setBooks((books) => [...books, book]);
@@ -14,6 +17,17 @@ export default function App() {
     setNight(!isNight);
   }
 
+  function handleDelete(id) {
+    setBooks((book) => book.filter((book) => book.id !== id));
+  }
+
+  useEffect(
+    function () {
+      const storedBooks = localStorage.setItem("books", JSON.stringify(book));
+    },
+    [book]
+  );
+
   return (
     <main className={isNight ? "night" : ""}>
       <div>
@@ -22,7 +36,7 @@ export default function App() {
           <Search isNight={isNight} onAddBooks={addBooks} />
         </div>
         <div>
-          <BookList book={book} night={isNight} />
+          <BookList book={book} night={isNight} onDelete={handleDelete} />
         </div>
       </div>
     </main>
@@ -49,7 +63,7 @@ function Search({ isNight, onAddBooks }) {
   function handleForm(e) {
     e.preventDefault();
     if (!input) return;
-    const newBook = { name: input };
+    const newBook = { name: input, id: Math.floor(Math.random() * 10) };
     console.log(input);
     console.log(newBook);
     onAddBooks(newBook);
@@ -68,17 +82,24 @@ function Search({ isNight, onAddBooks }) {
   );
 }
 
-function BookList({ book }) {
+function BookList({ book, onDelete }) {
   return (
     <ul>
       {book.map((book) => (
-        <Book book={book} />
+        <Book book={book} key={book.id} onDelete={onDelete} />
       ))}
     </ul>
   );
 }
 
-function Book({ book }) {
+function Book({ book, onDelete }) {
   console.log(book);
-  return <li>{book.name}</li>;
+  return (
+    <li>
+      {book.name}
+      <span className="delete" onClick={() => onDelete(book.id)}>
+        ❌
+      </span>
+    </li>
+  );
 }
