@@ -1,13 +1,11 @@
 import { MdDarkMode, MdLightMode } from "react-icons/md";
 import { useEffect, useState } from "react";
 import "./App.css";
+import { useLocalStorageState } from "./useLocalStorageState";
 
 export default function App() {
   const [isNight, setNight] = useState(false);
-  const [book, setBooks] = useState(function () {
-    const stored = localStorage.getItem("books");
-    return JSON.parse(stored);
-  });
+  const [book, setBooks] = useLocalStorageState([], "books");
 
   function addBooks(book) {
     setBooks((books) => [...books, book]);
