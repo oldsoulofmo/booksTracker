@@ -1,5 +1,5 @@
 import { MdDarkMode, MdLightMode } from "react-icons/md";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import { useLocalStorageState } from "./useLocalStorageState";
 
@@ -66,6 +66,7 @@ function Header({ night, onClick, onClick2 }) {
 }
 
 function Search({ isNight, onAddBooks }) {
+  const inputEL = useRef(null);
   const [input, setInput] = useState("");
   function handleForm(e) {
     e.preventDefault();
@@ -76,6 +77,22 @@ function Search({ isNight, onAddBooks }) {
     onAddBooks(newBook);
     setInput("");
   }
+
+  useEffect(
+    function () {
+      function callback(e) {
+        if (document.activeElement === inputEL.current) return;
+
+        if (e.code === "Enter") {
+          inputEL.current.focus();
+        }
+      }
+      document.addEventListener("keydown", callback);
+      return () => document.addEventListener("keydown", callback);
+    },
+    [isNight]
+  );
+
   return (
     <form onSubmit={handleForm}>
       <input
@@ -84,6 +101,7 @@ function Search({ isNight, onAddBooks }) {
         className={!isNight ? "textBox-day" : "textBox"}
         placeholder="What are you reading ?"
         onChange={(e) => setInput(e.target.value)}
+        ref={inputEL}
       />
     </form>
   );
