@@ -39,7 +39,7 @@ function Header({ night, onClick, onClick2 }) {
   return (
     <header>
       <a href="">
-        <span className={night ? "a" : ""}>zamel2r</span>
+        <span className={night ? "a" : ""}>booksTracker</span>
       </a>
       {!night ? (
         <MdDarkMode size={25} onClick={onClick} />
