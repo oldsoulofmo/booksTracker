@@ -8,7 +8,7 @@ export function useLocalStorageState(initialState, key) {
 
   useEffect(
     function () {
-      localStorage.setItem(key, JSON.stringify(value));
+      const storedBooks = localStorage.setItem(key, JSON.stringify(value));
     },
     [value, key]
   );

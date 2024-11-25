@@ -19,22 +19,7 @@ export default function App() {
     setBooks((book) => book.filter((book) => book.id !== id));
   }
 
-  useEffect(
-    function () {
-      try {
-        if (book.length > 0) {
-          const storedBooks = localStorage.setItem(
-            "books",
-            JSON.stringify(book)
-          );
-        }
-      } catch (e) {
-        console.error(e);
-      }
-    },
-    [book]
-  );
-
+  
   return (
     <main className={isNight ? "night" : ""}>
       <div>
@@ -54,7 +39,7 @@ function Header({ night, onClick, onClick2 }) {
   return (
     <header>
       <a href="">
-        <span className={night ? "a" : ""}>booksTracker</span>
+        <span className={night ? "a" : ""}>zamel2r</span>
       </a>
       {!night ? (
         <MdDarkMode size={25} onClick={onClick} />
